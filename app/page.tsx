@@ -6,6 +6,7 @@ import CreateUserInterfaceFromComponents from "./components/main/CreateUserInter
 import AddInteractivityWhereverYouNeedIt from "./components/main/AddInteractivityWhereverYouNeedIt";
 import WriteComponentsWithCodeAndMarkup from "./components/main/WriteComponentsWithCodeAndMarkup";
 import GoFullStackWithAFramework from "./components/main/GoFullStackWithAFramework";
+import UseTheBestFromEveryPlatform from "./components/main/UseTheBestFromEveryPlatform";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <WriteComponentsWithCodeAndMarkup />
       <AddInteractivityWhereverYouNeedIt />
       <GoFullStackWithAFramework />
+      <UseTheBestFromEveryPlatform />
     </div>
   );
 }
