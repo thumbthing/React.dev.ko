@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { ReactNode } from "react";
 
 interface MainPageTextProps {
@@ -6,23 +7,25 @@ interface MainPageTextProps {
   scriptName?: string;
   scriptText?: ReactNode;
   scriptView?: string;
-  idea: string;
+  idea?: string;
   ideaLink?: ReactNode;
   webInfoTitle?: string;
   webInfoDesc?: string;
   nativeAppTitle?: string;
   nativeAppDesc?: string;
+  reactNews?: ReactNewsProps[];
+  communityPictures?: CommunityPictureProps[];
 }
 
-const UseTheBestFromEveryPlatformProps = {
-  head: ``,
-  description: ``,
-  scriptName: ``,
-  scriptText: ``,
-  scriptView: ``,
-  idea: ``,
-  ideaLink: ``,
-};
+interface ReactNewsProps {
+  title: string;
+  date: string;
+}
+
+interface CommunityPictureProps {
+  name: string;
+  imagePath: string;
+}
 
 export default function MainPageContentLayout(props: MainPageTextProps) {
   const {
@@ -37,7 +40,10 @@ export default function MainPageContentLayout(props: MainPageTextProps) {
     webInfoDesc,
     nativeAppTitle,
     nativeAppDesc,
+    reactNews,
+    communityPictures,
   } = props;
+
   return (
     <>
       <div>
@@ -64,6 +70,34 @@ export default function MainPageContentLayout(props: MainPageTextProps) {
               <div>apple, andriod</div>
             </div>
           </div>
+        )}
+        {reactNews && (
+          <div>
+            <ul>
+              {reactNews.map((news, index) => (
+                <li key={index}>
+                  <div>
+                    <h2>{news.title}</h2>
+                    <h4>{news.date}</h4>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {communityPictures && (
+          <ul>
+            {communityPictures.map((pictures, index) => (
+              <li key={pictures.name + index}>
+                <Image
+                  src={pictures.imagePath}
+                  alt={pictures.name + index}
+                  width={100}
+                  height={100}
+                />
+              </li>
+            ))}
+          </ul>
         )}
         <h5>{idea}</h5>
         {ideaLink && <button>{ideaLink}</button>}
